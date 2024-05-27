@@ -4,6 +4,7 @@ for (i = 0; i < document.querySelectorAll(".drum").length ; i++){ // detecting c
         "click", function  (){
             var buttonInnerHTML = this.innerHTML;
             makeSound(buttonInnerHTML);
+            ButtonAnimation(buttonInnerHTML);
             }
     )
 }
@@ -11,6 +12,7 @@ for (i = 0; i < document.querySelectorAll(".drum").length ; i++){ // detecting c
 // detecting keyboard key and pass to sound function
 document.addEventListener("keydown", function(event){
     makeSound(event.key);
+    ButtonAnimation(event.key);
 });
 
 
@@ -57,4 +59,11 @@ function makeSound (key){
             console.log(key)
             break;
     }
+}
+
+function ButtonAnimation(currentKey){
+    var activeButton = document.querySelector("."+currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function (){activeButton.classList.remove("pressed")},100);
+    ;
 }
